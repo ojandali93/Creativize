@@ -1,0 +1,39 @@
+[
+    {   
+        "id": 121,
+        "name": "August Sky",
+        "director": "Jasmin Tenucci",
+        "release": "2021",
+        "length": "16 min.",
+        "thumbnail": "augustsky.jpeg",
+        "blurb": "As the Amazon burns for the seventeenth day, a nurse in Sao Paulo finds herself drawn to a Neo-Pentecostal church."
+
+    },
+    {
+        "id": 122,
+        "name": "ReMoved",
+        "director": "Nathanael Matanick",
+        "release": "2013",
+        "length": "10 min.",
+        "thumbnail": "maxresdefault.jpeg",
+        "blurb": "A 10-year-old girl navigates her way through the foster care system, after being removed from her home and separated from her younger brother."
+    },
+    {
+        "id": 123,
+        "name": "Play It Safe",
+        "director": "Mitch Kalisa",
+        "release": "2020",
+        "length": "13 min.",
+        "thumbnail": "maxresdefault.jpeg",
+        "blurb": "Coaxed into playing a racial typecast in a fellow student's play, Jonathan is faced to either challenge prejudice, or play it safe."
+    },
+    {
+        "id": 124,
+        "name": "Brenda",
+        "director": "Andrew Lynch",
+        "release": "2021",
+        "length": "9 min.",
+        "thumbnail": "brenda.png",
+        "blurb": "The last day of a heroin addicts life as seen through the eyes of her seven year old daughter."
+    }
+]
