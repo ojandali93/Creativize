@@ -1,39 +1,42 @@
 [
     {   
         "id": 121,
+        "genre": "Thriller",
         "name": "August Sky",
         "director": "Jasmin Tenucci",
         "release": "2021",
         "length": "16 min.",
-        "thumbnail": "augustsky.jpeg",
+        "thumbnail": "../../assets/images/sf-1-min.png",
         "blurb": "As the Amazon burns for the seventeenth day, a nurse in Sao Paulo finds herself drawn to a Neo-Pentecostal church."
-
     },
     {
         "id": 122,
+        "genre": "Action",
         "name": "ReMoved",
         "director": "Nathanael Matanick",
         "release": "2013",
         "length": "10 min.",
-        "thumbnail": "maxresdefault.jpeg",
+        "thumbnail": "../../assets/images/sf-2-min.png",
         "blurb": "A 10-year-old girl navigates her way through the foster care system, after being removed from her home and separated from her younger brother."
     },
     {
         "id": 123,
+        "genre": "Thriller",
         "name": "Play It Safe",
         "director": "Mitch Kalisa",
         "release": "2020",
         "length": "13 min.",
-        "thumbnail": "maxresdefault.jpeg",
+        "thumbnail": "../../assets/images/sf-3-min.png",
         "blurb": "Coaxed into playing a racial typecast in a fellow student's play, Jonathan is faced to either challenge prejudice, or play it safe."
     },
     {
         "id": 124,
+        "genre": "Documentary",
         "name": "Brenda",
         "director": "Andrew Lynch",
         "release": "2021",
         "length": "9 min.",
-        "thumbnail": "brenda.png",
+        "thumbnail": "../../assets/images/sf-4-min.png",
         "blurb": "The last day of a heroin addicts life as seen through the eyes of her seven year old daughter."
     }
 ]
