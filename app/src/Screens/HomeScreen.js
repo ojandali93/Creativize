@@ -1,12 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import axios from 'axios'
 import ShoftFilmTile from "../Components/ShoftFilmTile"
-import MockData from '../../assets/MockData.json'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 
 export default function HomeScreen() {
+  const [shorts, setShorts] = useState([])
+  const [awardWinning, setAwardWinning] = useState([])
+  const [recentReleases, setRecentReleases] = useState([])
+  const [staffPick, setStaffPick] = useState([])
+  const [featured, setFeatured] = useState([])
 
-  const [shorts, setShorts] = useState(MockData)
+  let awardWinningList = []
+  let recentReleaseList = []
+  let staffPickList = []
+  let featuredList = []
+
+  let options = {
+    method: 'GET',
+    url: 'https://youtube-v31.p.rapidapi.com/search',
+    params: {
+      channelId: 'UCrSvhrtUgpZT3EU0x1Zoy-w',
+      part: 'snippet,id',
+      order: 'date',
+      maxResults: '20'
+    },
+    headers: {
+      'x-rapidapi-host': 'youtube-v31.p.rapidapi.com',
+      'x-rapidapi-key': 'd215d48d9cmsh70fd20aaaf82139p17c47cjsnaab25fce9232'
+    }
+  };
+
+  useEffect(() => {
+    axios.request(options)
+    .then(function (response) {
+      setShorts(response.data.items)
+    })
+    .catch(function (error) {
+      console.error(error);
+    });  
+  }, [])
+
+  useEffect(() => {
+    console.log(shorts.length)
+    for(let i = 0; i < shorts.length; i++){
+      if(i >= 12){
+        featuredList.push(shorts[i])
+      }
+      if(i >= 8 && i < 12){
+        staffPickList.push(shorts[i])
+      }
+      if(i >= 4 && i < 8){
+        awardWinningList.push(shorts[i])
+      }
+      if(i < 4){
+        recentReleaseList.push(shorts[i])
+      }
+    }
+    setAwardWinning(awardWinningList)
+    setRecentReleases(recentReleaseList)
+    setStaffPick(staffPickList)
+    setFeatured(featuredList)
+    
+  }, [shorts])
 
   return (
     <View style={styles.app}>
@@ -16,10 +72,10 @@ export default function HomeScreen() {
           <View style={styles.scrollBoxHorizontal}>
             <FlatList
               horizontal
-              keyExtractor={film => film.id}
-              data={shorts}
-              renderItem={(film) => {
-                return(<ShoftFilmTile film={film} badge="award-winning"/>)
+              data={awardWinning}
+              keyExtractor={short => short.id.videoId}
+              renderItem={(short) => {
+                return(<ShoftFilmTile short={short} badge="award-winning"/>)
               }}
             />
           </View>
@@ -30,10 +86,10 @@ export default function HomeScreen() {
             <FlatList
               style={styles.featuredFilms}
               horizontal
-              keyExtractor={film => film.id}
-              data={shorts}
-              renderItem={(film) => {
-                return(<ShoftFilmTile film={film} badge="new-release"/>)
+              keyExtractor={short => short.id.videoId}
+              data={recentReleases}
+              renderItem={(short) => {
+                return(<ShoftFilmTile short={short} badge="new-release"/>)
               }}
             />
           </View>
@@ -43,10 +99,10 @@ export default function HomeScreen() {
           <View style={styles.scrollBoxHorizontal}>
             <FlatList
               horizontal
-              keyExtractor={film => film.id}
-              data={shorts}
-              renderItem={(film) => {
-                return(<ShoftFilmTile film={film} badge="staff-pick"/>)
+              keyExtractor={short => short.id.videoId}
+              data={staffPick}
+              renderItem={(short) => {
+                return(<ShoftFilmTile short={short} badge="staff-pick"/>)
               }}
             />
           </View>
@@ -55,10 +111,10 @@ export default function HomeScreen() {
           <Text style={styles.category}>Featured</Text>
           <View>
             <FlatList
-              keyExtractor={film => film.id}
-              data={shorts}
-              renderItem={(film) => {
-                return(<ShoftFilmTile film={film} badge="featured"/>)
+              keyExtractor={short => short.id.videoId}
+              data={featured}
+              renderItem={(short) => {
+                return(<ShoftFilmTile short={short} badge="featured"/>)
               }}
             />
           </View>

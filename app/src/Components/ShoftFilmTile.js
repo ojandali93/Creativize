@@ -1,17 +1,49 @@
 import React from 'react'
-import { StyleSheet, View} from 'react-native'
-import BadgedTile from './BadgedTile'
-import FeaturedTile from './FeaturedTile'
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ShoftFilmTile(props) {
-  const film = props.film.item
-  const badge = props.badge
+  const {
+    short  } = props
+
+  const currentShort = short.item.snippet
+  const splitChannel = currentShort.title.split(' | ')
+  const splitVideoTitle = splitChannel[0]
+  const splitTitle = splitVideoTitle.split('&quot;')
+  const shortTitleAuthor = splitTitle[1] + splitTitle[2]
+  // const shortDirector = shortTail.split('|')
+
+  const parseDate = currentShort.publishedAt.split('T')
+  const parseMDY = parseDate[0].split('-')
+  const year = parseMDY[0]
+  const month = parseMDY[1]
+  const date = parseMDY[2]
+  const releaseDate = month + '-' + date + '-' + year
+
+  const navigation = useNavigation()
 
   return (
     <View style={styles.tile}>
-      {
-        badge == 'award-winning' || badge == 'staff-pick' || badge == 'new-release' ? <BadgedTile film={film} badge={badge}/> : <FeaturedTile film={film} badge={badge}/>
-      }
+      <TouchableOpacity onPress={() => {
+        navigation.navigate("ShortDetailScreen", {film: film})
+      }}>
+        <View style={styles.tileContent}>
+          <Image style={styles.thumbnail} source={{uri: currentShort.thumbnails.high.url}}/>
+          <View style={styles.tileDetails}>
+            <View style={styles.rowData}>
+              <Text style={styles.title}>{shortTitleAuthor}</Text> 
+              {/* <Text style={styles.stitle}>{shortTail}</Text>   */}
+            </View>
+            <View style={styles.rowData}>
+              <Text style={styles.text}>{currentShort.channelTitle}</Text>
+              <Text style={styles.text}>{releaseDate}</Text>
+            </View>
+            <View style={styles.rowData}>
+              <Text style={styles.text}>{currentShort.description}</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -20,5 +52,41 @@ const styles = StyleSheet.create({
   tile: {
     marginVertical: 12,
     maxHeight: 600
+  },
+  tileContent: {
+    maxWidth: 380,
+    marginRight: 12,
+  },
+  thumbnail: {
+    height: 210,
+    width: 380
+  },
+  tileDetails: {
+    padding: 4
+  },
+  rowData: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 4
+  },
+  titleName: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  badge: {
+    height: 20,
+    width: 20,
+    marginRight: 4
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  genre: {
+    fontSize: 20
+  },
+  text: {
+    fontSize: 16
   }
 })
