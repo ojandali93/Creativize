@@ -10,7 +10,7 @@ export default function BadgedTile(props) {
   return (
     <>
       <TouchableOpacity onPress={() => {
-        navigation.navigate("ShortDetailScreen")
+        navigation.navigate("ShortDetailScreen", {film: film})
       }}>
         <View style={styles.tileContent}>
           <Image style={styles.thumbnail} source={require("../../assets/images/sf-1-min.png")}/>

@@ -1,29 +1,37 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 export default function FeaturedTile(props) {
   const film = props.film
+  const navigation = useNavigation()
 
   return (
-    <View style={styles.tileContent}>
-      <Image style={styles.thumbnail} source={require("../../assets/images/sf-1-min.png")}/>
-      <View style={styles.tileDetails}>
-        <View style={styles.rowData}>
-          <View style={styles.titleName}>
-            <Text style={styles.title}>{film.name}</Text>
+    <>
+      <TouchableOpacity onPress={() => {
+        navigation.navigate("ShortDetailScreen", {film: film})
+      }}>
+        <View style={styles.tileContent}>
+          <Image style={styles.thumbnail} source={require("../../assets/images/sf-1-min.png")}/>
+          <View style={styles.tileDetails}>
+            <View style={styles.rowData}>
+              <View style={styles.titleName}>
+                <Text style={styles.title}>{film.name}</Text>
+              </View>
+              <Text style={styles.genre}>{film.genre}</Text>  
+            </View>
+            <View style={styles.rowData}>
+              <Text style={styles.text}>{film.director}</Text>
+              <Text style={styles.text}>{film.release}</Text>
+              <Text style={styles.text}>{film.length}</Text>
+            </View>
+            <View style={styles.rowData}>
+              <Text style={styles.text}>{film.blurb}</Text>
+            </View>
           </View>
-          <Text style={styles.genre}>{film.genre}</Text>  
         </View>
-        <View style={styles.rowData}>
-          <Text style={styles.text}>{film.director}</Text>
-          <Text style={styles.text}>{film.release}</Text>
-          <Text style={styles.text}>{film.length}</Text>
-        </View>
-        <View style={styles.rowData}>
-          <Text style={styles.text}>{film.blurb}</Text>
-        </View>
-      </View>
-    </View>
+      </TouchableOpacity>
+    </>
   )
 }
 
