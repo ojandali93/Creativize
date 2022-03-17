@@ -10,7 +10,6 @@ export default function FeaturedTile(props) {
       <View style={styles.tileDetails}>
         <View style={styles.rowData}>
           <View style={styles.titleName}>
-            <Image style={styles.badge} source={require('../../assets/outline_workspace_premium_black_24dp.png')}/>
             <Text style={styles.title}>{film.name}</Text>
           </View>
           <Text style={styles.genre}>{film.genre}</Text>  

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View} from 'react-native'
 import BadgedTile from './BadgedTile'
 import FeaturedTile from './FeaturedTile'
 

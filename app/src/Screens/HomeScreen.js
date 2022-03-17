@@ -53,7 +53,7 @@ export default function HomeScreen() {
         </View>
         <View style={styles.section}>
           <Text style={styles.category}>Featured</Text>
-          <View style={{backgroundColor: 'lightgrey'}}>
+          <View>
             <FlatList
               keyExtractor={film => film.id}
               data={shorts}
