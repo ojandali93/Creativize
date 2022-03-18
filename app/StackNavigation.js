@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from './src/Screens/HomeScreen'
-import ShortDetailsScreen from './src/Screens/ShortDetailsScreen'
 import ProjectScreen from './src/Screens/ProjectScreen'
 import ProfileScreen from './src/Screens/ProfileScreen'
 import SearchScreen from './src/Screens/SearchScreen'
+import DetailsScreen from './src/Screens/DetailsScreen'
 
 const Stack = createStackNavigator()
 
@@ -12,7 +12,7 @@ const HomeScreenNavigator = () => {
   return(
     <Stack.Navigator screenOptions={{ headerShown: false }} >
       <Stack.Screen name="HomeScreen" component={HomeScreen}/>      
-      <Stack.Screen name="ShortDetailScreen" component={ShortDetailsScreen}/>
+      <Stack.Screen name="DetailsScreen" component={DetailsScreen}/>
     </Stack.Navigator>
   )
 }

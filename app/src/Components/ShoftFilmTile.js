@@ -26,7 +26,7 @@ export default function ShoftFilmTile(props) {
   return (
     <View style={styles.tile}>
       <TouchableOpacity onPress={() => {
-        navigation.navigate("ShortDetailScreen", {short: short})
+        navigation.navigate("DetailsScreen", {short: short})
       }}>
         <View style={styles.tileContent}>
           <Image style={styles.thumbnail} source={{uri: currentShort.thumbnails.high.url}}/>
