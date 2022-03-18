@@ -8,6 +8,7 @@ import axios from 'axios'
 export default function SearchScreen() {
   const [text, setText] = useState()
   const [results, setResults] = useState()
+  const [titles, setTitles] = useState([])
 
   let options = {
     method: 'GET',
@@ -24,11 +25,22 @@ export default function SearchScreen() {
     }
   };
 
+  const formatTitle = (title) => {
+    const splitChannel = title.split(' | ')
+    const splitVideoTitle = splitChannel[0]
+    const splitTitle = splitVideoTitle.split('&quot;')
+    const shortTitleAuthor = splitTitle[1] + splitTitle[2]
+    return shortTitleAuthor
+  }
+
   useEffect(() => {
     axios.request(options)
     .then(function (response) {
-      console.log(response.data.items)
       setResults(response.data.items)
+      response.data.items.map((short) => {
+        let currentTitle = formatTitle(short.snippet.title)
+        setTitles(titles => [...titles, currentTitle])
+      })
     })
     .catch(function (error) {
       console.error(error);
