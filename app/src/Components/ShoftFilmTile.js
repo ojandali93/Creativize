@@ -4,14 +4,15 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function ShoftFilmTile(props) {
   const {
-    short  } = props
+    short,
+    badge
+  } = props
 
   const currentShort = short.item.snippet
   const splitChannel = currentShort.title.split(' | ')
   const splitVideoTitle = splitChannel[0]
   const splitTitle = splitVideoTitle.split('&quot;')
   const shortTitleAuthor = splitTitle[1] + splitTitle[2]
-  // const shortDirector = shortTail.split('|')
 
   const parseDate = currentShort.publishedAt.split('T')
   const parseMDY = parseDate[0].split('-')
@@ -25,7 +26,7 @@ export default function ShoftFilmTile(props) {
   return (
     <View style={styles.tile}>
       <TouchableOpacity onPress={() => {
-        navigation.navigate("ShortDetailScreen", {film: film})
+        navigation.navigate("ShortDetailScreen", {short: short})
       }}>
         <View style={styles.tileContent}>
           <Image style={styles.thumbnail} source={{uri: currentShort.thumbnails.high.url}}/>
