@@ -4,6 +4,7 @@ import HomeScreen from './src/Screens/HomeScreen'
 import ShortDetailsScreen from './src/Screens/ShortDetailsScreen'
 import ProjectScreen from './src/Screens/ProjectScreen'
 import ProfileScreen from './src/Screens/ProfileScreen'
+import SearchScreen from './src/Screens/SearchScreen'
 
 const Stack = createStackNavigator()
 
@@ -17,6 +18,16 @@ const HomeScreenNavigator = () => {
 }
 
 export {HomeScreenNavigator}
+
+const SearchScreenNavigator = () => {
+  return(
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SearchScreen" component={SearchScreen}/>      
+    </Stack.Navigator>
+  )
+}
+
+export {SearchScreenNavigator}
 
 const ProjectScreenNavigator = () => {
   return(

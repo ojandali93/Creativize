@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-export default function ShoftFilmTile(props) {
+export default function ResultsTile(props) {
   const {
     short,
     badge
@@ -24,28 +24,30 @@ export default function ShoftFilmTile(props) {
   const navigation = useNavigation()
 
   return (
-    <View style={styles.tile}>
-      <TouchableOpacity onPress={() => {
-        navigation.navigate("ShortDetailScreen", {short: short})
-      }}>
-        <View style={styles.tileContent}>
-          <Image style={styles.thumbnail} source={{uri: currentShort.thumbnails.high.url}}/>
-          <View style={styles.tileDetails}>
-            <View style={styles.rowData}>
-              <Text style={styles.title}>{shortTitleAuthor}</Text> 
-              {/* <Text style={styles.stitle}>{shortTail}</Text>   */}
-            </View>
-            <View style={styles.rowData}>
-              <Text style={styles.text}>{currentShort.channelTitle}</Text>
-              <Text style={styles.text}>{releaseDate}</Text>
-            </View>
-            <View style={styles.rowData}>
-              <Text style={styles.text}>{currentShort.description}</Text>
+    <>
+      <View style={styles.tile}>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate("ShortDetailScreen", {short: short})
+        }}>
+          <View style={styles.tileContent}>
+            <Image style={styles.thumbnail} source={{uri: currentShort.thumbnails.high.url}}/>
+            <View style={styles.tileDetails}>
+              <View style={styles.rowData}>
+                <Text style={styles.title}>{shortTitleAuthor}</Text> 
+                {/* <Text style={styles.stitle}>{shortTail}</Text>   */}
+              </View>
+              <View style={styles.rowData}>
+                <Text style={styles.text}>{currentShort.channelTitle}</Text>
+                <Text style={styles.text}>{releaseDate}</Text>
+              </View>
+              <View style={styles.rowData}>
+                <Text style={styles.text}>{currentShort.description}</Text>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableOpacity>
-    </View>
+        </TouchableOpacity>
+      </View>
+    </>
   )
 }
 
@@ -53,16 +55,13 @@ const styles = StyleSheet.create({
   tile: {
     marginVertical: 12,
     maxHeight: 600,
-    borderRadius: 5
-  },
-  tileContent: {
-    maxWidth: 380,
-    marginRight: 12,
-    backgroundColor: '#E5E4E2',
+    width: '100%',
+    borderRadius: 5,
+    backgroundColor: '#E5E4E2'
   },
   thumbnail: {
-    height: 210,
-    width: 380,
+    height: 220,
+    width: '100%',
     borderRadius: 5
   },
   tileDetails: {
@@ -94,3 +93,4 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 })
+
